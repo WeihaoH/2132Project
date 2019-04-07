@@ -1,0 +1,35 @@
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
+<script>
+	$(document).ready(function(){
+		var minDate=new Date();
+		$("#checkIn").datepicker({
+			showAnim: 'drop',
+			numberOfMonth: 1,
+			minDate: minDate,
+			dateFormat:'dd/mm/yy',
+			onClose: function(selectedDate){
+				$("#checkOut").datepicker("option","minDate", selectedDate);
+			}
+		});
+
+		$("#checkOut").datepicker({
+			showAnim: 'drop',
+			numberOfMonth: 1,
+			minDate: minDate,
+			dateFormat:'dd/mm/yy',
+			onClose: function(selectedDate){
+				$("#checkIn").datepicker("option","minDate", selectedDate);
+			}
+		});
+	});
+</script>
+
+		<div class="select-box">
+  		<input type="text" name="check in" id="checkIn" placeholder="Enter check in date">
+		</div>	
+		<div class="select-box">
+  		<input type="text" name="check out" id="checkOut" placeholder="Enter check out date">
+		</div>
